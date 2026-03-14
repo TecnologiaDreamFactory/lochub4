@@ -1,0 +1,1586 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 0;
+    position: relative;
+}
+
+#sobre, #solucoes, #clientes, #contato {
+    scroll-margin-top: 90px;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/cubos.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    z-index: -1;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* Títulos e texto unificados + evita corte de tela */
+h1, h2, .carousel-title {
+    font-size: 2.25rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+p, .carousel-subtitle, .hero p, .contact-hero p {
+    font-size: 1.05rem;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+}
+
+.container {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    box-sizing: border-box;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #000000;
+    padding: calc(1rem + 15px) 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background 0.3s ease;
+}
+
+.menu-toggle span + span {
+    margin-top: 5px;
+}
+
+.menu-toggle.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: #ffffff;
+}
+
+.menu-toggle.is-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: #ffffff;
+}
+
+.logo {
+    display: block;
+    line-height: 0;
+    height: 72px;
+    overflow: visible;
+}
+
+.logo img {
+    height: 72px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.25s ease;
+    transform-origin: left center;
+}
+
+.logo:hover img {
+    transform: scale(1.14);
+}
+
+nav a {
+    margin-left: 2rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.14rem;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+.hero {
+    background: linear-gradient(135deg, #556B7D 0%, #3d4a5a 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.contact-hero {
+    background: linear-gradient(135deg, #556B7D 0%, #3d4a5a 100%);
+    color: #ffffff;
+    padding: 4rem 2rem;
+    text-align: left;
+    margin: 100px 0 100px 0;
+}
+
+.contact-hero h2 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.contact-hero p {
+    margin-bottom: 0;
+}
+
+.hero h1 {
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background: #556B7D;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.2s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    background: #3d4a5a;
+}
+
+section {
+    padding: 3rem 2rem;
+    background: white;
+    margin: 0 0 100px 0;
+    border-radius: 0.5rem;
+}
+
+section.sobre-wrapper {
+    padding: 4rem 0;
+    margin: 0 0 100px 0;
+    border-radius: 0;
+    background: #ffffff;
+}
+
+section.sobre-wrapper .container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+section h2 {
+    margin-bottom: 2rem;
+    color: #1a1a1a;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.card {
+    background: #f5f5f5;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.card h3 {
+    margin: 1rem 0 0.5rem 0;
+    color: #333;
+}
+
+.card p {
+    color: #666;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-item {
+    background: #f9f9f9;
+    padding: 2rem;
+    border-left: 4px solid #556B7D;
+    border-radius: 0.3rem;
+}
+
+.service-item h3 {
+    margin-bottom: 0.5rem;
+    color: #556B7D;
+}
+
+/* ── Ticker infinito de clientes ── */
+.clients-track-wrapper {
+    overflow: hidden;
+    margin-top: 2rem;
+    padding: 0.5rem 0;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 7%, black 93%, transparent 100%);
+}
+
+.clients-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: clients-ticker 60s linear infinite;
+    will-change: transform;
+}
+
+@keyframes clients-ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.client-logo {
+    flex: 0 0 auto;
+    width: 144px;
+    height: 54px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.765rem;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+    padding: 0.9rem;
+    position: relative;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    user-select: none;
+}
+
+.client-logo:hover {
+    border-color: #1a73e8;
+    box-shadow: 0 2px 12px rgba(26, 115, 232, 0.15);
+}
+
+/* Tooltip fixo (criado via JS, position: fixed no body) */
+.clients-tooltip {
+    position: fixed;
+    z-index: 500;
+    width: 220px;
+    background: rgba(15, 23, 42, 0.93);
+    color: #f1f5f9;
+    font-size: 0.78rem;
+    font-weight: 400;
+    line-height: 1.55;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    white-space: normal;
+}
+
+.clients-tooltip.is-visible {
+    opacity: 1;
+}
+
+/* Setinha embaixo do tooltip */
+.clients-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(15, 23, 42, 0.93);
+}
+
+.contact {
+    background: white;
+    color: #333;
+    padding: 2rem auto;
+    text-align: left;
+    margin: 0 auto;
+    border-radius: 0;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.contact-icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.contact-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.contact-icon:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.1);
+}
+
+.contact-icon svg {
+    flex-shrink: 0;
+}
+
+.banner-section {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.parallax-slider {
+    position: relative;
+    width: 100%;
+    height: 72vh;
+    min-height: 450px;
+    max-height: 770px;
+    overflow: hidden;
+    background: #000000;
+}
+
+@keyframes kenBurns {
+    from { transform: scale(1);   }
+    to   { transform: scale(1.12); }
+}
+
+.parallax-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    opacity: 1;
+    z-index: 1;
+    will-change: transform, opacity;
+    transform: scale(1);
+}
+
+.parallax-slide.active {
+    opacity: 1;
+    z-index: 2;
+    animation: kenBurns 7s ease-in-out forwards;
+}
+
+/* Primeira imagem (central.webp) abre mais rápido */
+.parallax-slide:first-child.active {
+    animation-duration: 3.5s;
+}
+
+.parallax-slide.leaving {
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    animation: none !important;
+}
+
+.parallax-dots {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.parallax-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    padding: 0;
+    outline: none;
+}
+
+.parallax-dot.active {
+    background: white;
+    transform: scale(1.25);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    animation: fadeIn 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    border-radius: 0.5rem;
+    max-width: 800px;
+    width: 90%;
+    animation: zoomIn 0.25s ease-out;
+    overflow: hidden;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    transition: color 0.2s;
+    background: rgba(0, 0, 0, 0.6);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    line-height: 1;
+    padding: 0;
+}
+
+.modal-close:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.modal-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    margin-bottom: 0;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90vw;
+        max-height: 80vh;
+    }
+
+    .modal-image {
+        width: 100%;
+        height: auto;
+        max-height: 80vh;
+        object-fit: contain;
+    }
+}
+
+.gallery-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.gallery-thumb {
+    position: relative;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    height: 200px;
+    border: 2px solid #ddd;
+}
+
+.gallery-thumb:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(85, 107, 125, 0.3);
+    border-color: #556B7D;
+}
+
+.gallery-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-thumb-overlay {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-thumb:hover .gallery-thumb-overlay {
+    opacity: 1;
+}
+
+.gallery-thumb-text {
+    color: #000;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.carousel-container {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background: #000000;
+    margin: 100px 0 100px 0;
+}
+
+/* Garante que o container interno ocupa toda a largura disponível,
+   alinhando títulos e textos à mesma margem esquerda */
+.carousel-container > .container {
+    width: 100%;
+}
+
+/* Nossas Soluções: bloco full-width para o grid accordion */
+#solucoes.carousel-container {
+    display: block;
+    padding: 3rem 0 0;
+}
+
+#solucoes > .container {
+    padding: 0 1rem 1.5rem;
+}
+
+#solucoes .carousel-gallery {
+    max-width: 100%;
+}
+
+.carousel-container--white {
+    background: #ffffff;
+}
+
+.carousel-title--dark {
+    color: #1a1a1a !important;
+}
+
+.carousel-subtitle--dark {
+    color: #555 !important;
+    margin-bottom: 2rem;
+}
+
+
+
+.carousel-container--white .carousel-item img {
+    border-radius: 1rem;
+}
+
+.carousel-container--white .carousel-item-inner {
+    background: #f0f2f5;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+}
+
+.carousel-gallery {
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    border-radius: 0.5rem;
+}
+
+.carousel-container--white .carousel-gallery {
+    box-shadow: none;
+}
+
+/* ── Layout desktop: imagem centralizada ── */
+.carousel-layout {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    padding: 2rem 0;
+}
+
+/* Nossas Soluções: texto à esquerda, imagem à direita */
+.carousel-layout--reverse {
+    flex-direction: row-reverse;
+}
+
+/* O Que Fazemos: pequeno recuo visual do texto */
+.carousel-layout:not(.carousel-layout--reverse) .carousel-text-panel {
+    padding-left: 0;
+}
+
+/* Área da imagem + miniaturas prev/next nas laterais */
+.carousel-stage {
+    flex: 0 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    width: auto;
+}
+
+.carousel-showcase {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 34rem;
+    width: 34rem;
+    flex: 0 0 auto;
+    position: relative;
+}
+
+.carousel-slot {
+    flex: 0 0 auto;
+    position: relative;
+    overflow: visible;
+}
+
+/* Miniaturas de navegação prev/next */
+.carousel-slot--prev,
+.carousel-slot--next {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    cursor: default;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+/* Botão à esquerda da miniatura */
+.carousel-slot--prev {
+    flex-direction: row-reverse;
+}
+
+/* Botão à direita da miniatura */
+.carousel-slot--next {
+    flex-direction: row;
+}
+
+.carousel-slot--prev:hover,
+.carousel-slot--next:hover {
+    opacity: 1;
+}
+
+.carousel-slot--center {
+    width: 34rem;
+    height: 34rem;
+    z-index: 5;
+}
+
+.carousel-slot-inner {
+    position: absolute;
+    width: 34rem;
+    height: 34rem;
+    top: 50%;
+    left: 50%;
+    margin-left: -17rem;
+    margin-top: -17rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    transform-origin: center center;
+}
+
+/* Override: miniaturas prev/next usam posicionamento normal e não são clicáveis */
+.carousel-slot--prev .carousel-slot-inner,
+.carousel-slot--next .carousel-slot-inner {
+    position: relative;
+    width: 11rem;
+    height: 11rem;
+    top: auto;
+    left: auto;
+    margin-left: 0;
+    margin-top: 0;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    pointer-events: none;
+    cursor: default;
+}
+
+.carousel-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Coluna de miniaturas ao lado da imagem central */
+.carousel-thumbs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+}
+
+/* Botão circular de navegação ao lado da miniatura */
+.carousel-thumb-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: #ffffff;
+    font-size: 1.4rem;
+    line-height: 1;
+    padding-bottom: 0.05rem;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s, border-color 0.2s;
+    letter-spacing: 0;
+    text-transform: none;
+    flex-shrink: 0;
+}
+
+.carousel-slot--prev:hover .carousel-thumb-nav,
+.carousel-slot--next:hover .carousel-thumb-nav {
+    background: rgba(255,255,255,0.25);
+    border-color: rgba(255,255,255,0.6);
+}
+
+/* ── Painel de texto (desktop) ── */
+.carousel-text-panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-item-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #cccccc;
+    font-style: italic;
+}
+
+.carousel-title {
+    color: #ffffff;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
+
+.carousel-subtitle {
+    color: #dddddd;
+    text-align: left;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+}
+
+.subtitle-desktop {
+    display: inline;
+    white-space: nowrap;
+}
+
+.subtitle-mobile {
+    display: none;
+}
+
+.carousel-subtitle--single-line {
+    white-space: nowrap;
+}
+
+
+.carousel-prev,
+.carousel-next {
+    display: none;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: #556B7D;
+}
+
+/* Posicionados fora da imagem, nas bordas do .carousel-stage */
+.carousel-prev {
+    left: -3rem;
+}
+
+.carousel-next {
+    right: -3rem;
+}
+
+/* Oculta painel de texto no carrossel Nossas Soluções */
+#solucoes .carousel-text-panel {
+    display: none !important;
+}
+
+/* ── Accordion Horizontal de Soluções (estilo Locatruss) ── */
+
+.solucoes-grid {
+    width: 100%;
+    display: block;
+}
+
+/* Cada linha é um flex container independente */
+.solucoes-row {
+    display: flex;
+    height: 380px;
+    overflow: hidden;
+}
+
+/* Card: inicia com flex igual, expande no hover */
+.solucoes-card {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    min-width: 0;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    cursor: pointer;
+    transition: flex-grow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Foto — flex child, ocupa todo o espaço disponível */
+.solucoes-card__photo {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
+    transition: background-size 0.5s ease, background-position 0.5s ease;
+}
+
+/* Card ativo: imagem exibida proporcional, sem corte */
+.solucoes-row.row-hovered .solucoes-card.card-active .solucoes-card__photo {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Caixa de texto — oculta (largura zero) por padrão */
+.solucoes-card__textbox {
+    width: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: rgba(10, 10, 20, 0.92);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                padding 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.solucoes-card__textbox p {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.88);
+    margin: 0;
+    white-space: normal;
+    width: 100%;
+}
+
+/* Quando a linha está em hover: comprime todos os cards */
+.solucoes-row.row-hovered .solucoes-card {
+    flex-grow: 0.5;
+}
+
+/* Card ativo expande */
+.solucoes-row.row-hovered .solucoes-card.card-active {
+    flex-grow: 2.5;
+}
+
+/* Caixa de texto aparece ao lado da foto */
+.solucoes-row.row-hovered .solucoes-card.card-active .solucoes-card__textbox {
+    width: 38%;
+    padding: 1.4rem 1.6rem;
+}
+
+/*
+ * Alternância direita/esquerda da caixa de texto (cards 1–18):
+ *   Ímpares  (1,3,5 / 7,9,11 / 13,15,17) → foto à esq, texto à dir  (padrão)
+ *   Pares    (2,4,6 / 8,10,12 / 14,16,18) → texto à esq, foto à dir  (row-reverse)
+ * nth-child é relativo à .solucoes-row, que tem 6 filhos em cada linha,
+ * garantindo o padrão global correto de 1 a 18.
+ */
+.solucoes-row.row-hovered .solucoes-card:nth-child(even).card-active {
+    flex-direction: row-reverse;
+}
+
+/* Camada de imagem com zoom — pseudo-elemento que cobre o card */
+.solucoes-card__bg {
+    display: none;
+}
+
+/* Overlay escuro permanente + reforço no hover */
+.solucoes-card__photo::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.82) 0%,
+        rgba(0,0,0,0.30) 45%,
+        rgba(0,0,0,0.08) 100%
+    );
+    transition: background 0.35s ease;
+    z-index: 1;
+}
+
+.solucoes-card.card-active .solucoes-card__photo::before {
+    background: linear-gradient(
+        to top,
+        rgba(0,0,0,0.65) 0%,
+        rgba(0,0,0,0.10) 40%,
+        rgba(0,0,0,0.0) 100%
+    );
+}
+
+/* Número grande e translúcido */
+.solucoes-card__count,
+.solucoes-card__inner,
+.tg {
+    display: none;
+}
+
+.solucoes-card__count {
+    position: absolute;
+    top: 0.8rem;
+    left: 0.9rem;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.15);
+    line-height: 1;
+    z-index: 2;
+    letter-spacing: -0.02em;
+    transition: color 0.35s ease, opacity 0.35s ease;
+    white-space: nowrap;
+}
+
+.solucoes-card.card-active .solucoes-card__count {
+    color: rgba(255, 255, 255, 0.40);
+}
+
+/* Cantos decorativos — aparecem no hover */
+.tg {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.solucoes-card.card-active .tg {
+    opacity: 1;
+}
+
+.tg1 {
+    top: 9px;
+    left: 9px;
+    border-top: 2px solid rgba(255, 255, 255, 0.80);
+    border-left: 2px solid rgba(255, 255, 255, 0.80);
+}
+
+.tg2 {
+    top: 9px;
+    right: 9px;
+    border-top: 2px solid rgba(255, 255, 255, 0.80);
+    border-right: 2px solid rgba(255, 255, 255, 0.80);
+}
+
+.tg3 {
+    bottom: 9px;
+    left: 9px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.80);
+    border-left: 2px solid rgba(255, 255, 255, 0.80);
+}
+
+.tg4 {
+    bottom: 9px;
+    right: 9px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.80);
+    border-right: 2px solid rgba(255, 255, 255, 0.80);
+}
+
+/* Título — sobe e aparece no hover */
+.solucoes-card__inner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem 1rem 1rem;
+    z-index: 2;
+    transform: translateY(6px);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.solucoes-card.card-active .solucoes-card__inner {
+    transform: translateY(0);
+}
+
+.solucoes-card__title {
+    display: block;
+    color: #ffffff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    line-height: 1.3;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+    opacity: 0;
+    transition: opacity 0.4s ease 0.05s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.solucoes-card.card-active .solucoes-card__title {
+    opacity: 1;
+}
+
+footer {
+    background: #222;
+    color: #999;
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+}
+
+/* ── Botão flutuante WhatsApp ── */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.8rem;
+    right: 1.8rem;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.4rem;
+    height: 3.4rem;
+    border-radius: 50%;
+    background: #25d366;
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.30);
+    /* força camada de composição — corrige position:fixed no iOS Safari */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: box-shadow 0.2s;
+    text-decoration: none;
+    will-change: bottom;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 24px rgba(0,0,0,0.40);
+}
+
+@media (min-width: 769px) {
+    body {
+        padding-top: 90px;
+    }
+
+    .contact-icons {
+        gap: 3.5rem;
+        margin-top: 2.5rem;
+    }
+
+    .contact-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .contact-icon svg {
+        width: 32px;
+        height: 32px;
+    }
+
+    section.sobre-wrapper {
+        margin-top: -3px;
+        margin-bottom: 100px;
+        padding: 4rem 0;
+        border-radius: 0;
+        background: #ffffff;
+    }
+
+    #solucoes .carousel-subtitle--dark br {
+        display: none;
+    }
+
+    .main-nav-logo {
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        left: -9999px !important;
+    }
+
+    .main-nav-logo img {
+        display: none !important;
+    }
+}
+
+/* Soluções accordion — tablet: reduz altura */
+@media (max-width: 1100px) {
+    .solucoes-row {
+        height: 240px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 0;
+    }
+
+    .banner-section {
+        margin: 0;
+        margin-top: 134px;
+        margin-bottom: 0;
+        padding: 0;
+    }
+
+    .parallax-slider {
+        height: 55vw;
+        min-height: 240px;
+        max-height: 480px;
+    }
+
+    .header-content {
+        flex-wrap: nowrap;
+    }
+
+    .menu-toggle {
+        display: flex;
+        position: relative;
+        z-index: 1;
+    }
+
+    .menu-toggle.is-open {
+        z-index: 1001;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        min-height: 0;
+        max-height: 0;
+        overflow: hidden;
+        background: #000000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        z-index: 1000;
+        opacity: 0;
+        transition: max-height 0.35s ease, opacity 0.25s ease, width 0s 0.35s, height 0s 0.35s, visibility 0s 0.35s;
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    .main-nav.is-open {
+        width: 100vw;
+        height: 100vh;
+        min-height: 100vh;
+        max-height: 100vh;
+        padding: 2rem;
+        pointer-events: auto;
+        visibility: visible;
+        opacity: 1;
+        transition: max-height 0.35s ease, opacity 0.2s ease, width 0s 0s, height 0s 0s, visibility 0s 0s;
+    }
+
+    .main-nav-logo {
+        position: absolute;
+        top: calc(1rem + 15px);
+        left: 3rem;
+        display: block;
+        line-height: 0;
+        height: 72px;
+    }
+
+    .main-nav-logo img {
+        height: 72px;
+        width: auto;
+        display: block;
+        object-fit: contain;
+    }
+
+    .main-nav a:not(.main-nav-logo) {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        color: #ffffff;
+        text-align: center;
+        width: 100%;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    #sobre.sobre-wrapper {
+        margin-top: 0;
+        padding: 0 1rem 2rem 1rem;
+    }
+
+    .gallery-buttons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .gallery-thumb {
+        height: 160px;
+    }
+
+    #clientes h2 {
+        white-space: normal;
+    }
+
+    #clientes .container {
+        padding: 0 1rem;
+    }
+
+    .client-logo {
+        width: 117px;
+        height: 47px;
+        font-size: 0.7rem;
+        padding: 0.45rem;
+    }
+
+    #sobre, #solucoes, #clientes, #contato {
+        scroll-margin-top: 90px;
+    }
+
+    .carousel-container {
+        padding: 2.5rem 1rem;
+    }
+
+    h1, h2, .carousel-title {
+        font-size: 1.5rem;
+        line-height: 1.3;
+        padding: 0;
+    }
+
+    .carousel-title {
+        text-align: left;
+    }
+
+    p, .carousel-subtitle, .hero p, .contact-hero p {
+        font-size: 0.9rem;
+        line-height: 1.45;
+    }
+
+    .carousel-subtitle {
+        padding: 0;
+        text-align: left;
+        max-width: 100%;
+    }
+
+    #solucoes .carousel-subtitle--dark,
+    .carousel-subtitle--dark {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        max-width: 100%;
+    }
+
+    .subtitle-desktop {
+        display: none;
+        white-space: normal;
+    }
+
+    .subtitle-mobile {
+        display: inline;
+        white-space: normal;
+    }
+
+    /* Mobile: stage em linha (prev | center | next), texto abaixo */
+    .carousel-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .carousel-layout--reverse {
+        flex-direction: column;
+    }
+
+    .carousel-layout:not(.carousel-layout--reverse) .carousel-text-panel {
+        padding-left: 0;
+    }
+
+    /* Texto abaixo do stage, largura generosa */
+    .carousel-text-panel {
+        display: flex !important;
+        width: min(92vw, 380px);
+        padding: 0;
+        background: none;
+        border-radius: 0;
+        justify-content: center;
+    }
+
+    .carousel-item-text {
+        font-size: 0.88rem;
+        line-height: 1.7;
+        text-align: left;
+        color: #dddddd;
+        font-style: normal;
+    }
+
+    /* Stage: prev | center | next em linha única sem quebra */
+    .carousel-stage {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        overflow: visible;
+    }
+
+    .carousel-showcase {
+        order: 0;
+        flex: 0 0 auto;
+        width: min(72vw, 280px);
+        height: min(72vw, 280px);
+        justify-content: center;
+    }
+
+    .carousel-slot--prev,
+    .carousel-slot--next {
+        order: 0;
+        flex: 0 0 auto;
+        flex-direction: row;
+        gap: 0;
+    }
+
+    /* Oculta as miniaturas no mobile — apenas a seta fica visível */
+    .carousel-slot--prev .carousel-slot-inner,
+    .carousel-slot--next .carousel-slot-inner {
+        display: none;
+    }
+
+    /* Botão de seta maior no mobile para melhor toque */
+    .carousel-slot--prev .carousel-thumb-nav,
+    .carousel-slot--next .carousel-thumb-nav {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.6rem;
+    }
+
+    .carousel-slot--center {
+        width: min(72vw, 280px);
+        height: min(72vw, 280px);
+    }
+
+    .carousel-slot-inner {
+        width: min(72vw, 280px);
+        height: min(72vw, 280px);
+        margin-left: calc(min(72vw, 280px) / -2);
+        margin-top: calc(min(72vw, 280px) / -2);
+    }
+
+    .carousel-subtitle--single-line {
+        white-space: normal;
+    }
+
+    /* Soluções — mobile */
+    .solucoes-row {
+        height: 340px;
+    }
+
+    .solucoes-card {
+        transition: flex-grow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Card ativo ocupa muito mais espaço no mobile para dar largura ao texto */
+    .solucoes-row.row-hovered .solucoes-card {
+        flex-grow: 0.3;
+    }
+
+    .solucoes-row.row-hovered .solucoes-card.card-active {
+        flex-grow: 5;
+    }
+
+    .solucoes-row.row-hovered .solucoes-card.card-active .solucoes-card__textbox {
+        width: 52%;
+        padding: 0.85rem 1rem;
+    }
+
+    .solucoes-card__textbox p {
+        font-size: 0.70rem;
+        line-height: 1.55;
+        min-width: 0;
+    }
+
+    /* No mobile título e inner sempre visíveis após toque */
+    .solucoes-card__title {
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+    }
+
+    .solucoes-card__inner {
+        padding: 0.6rem 0.7rem;
+    }
+
+    .solucoes-card__count {
+        font-size: 1.3rem;
+        top: 0.5rem;
+        left: 0.6rem;
+    }
+
+    nav a {
+        margin-left: 1rem;
+        font-size: 0.85rem;
+    }
+
+    section {
+        padding: 2rem 1rem;
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+
+    section p {
+        max-width: 100%;
+    }
+
+    .whatsapp-float {
+        bottom: 0.5rem;
+        right: 0.75rem;
+        transition: opacity 0.2s ease, box-shadow 0.2s;
+    }
+
+    /* Esconde o botão do WhatsApp quando o menu mobile está aberto */
+    body:has(.main-nav.is-open) .whatsapp-float {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+    }
+}
