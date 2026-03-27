@@ -165,9 +165,119 @@ nav a:hover {
 .hero {
     background: linear-gradient(135deg, #556B7D 0%, #3d4a5a 100%);
     color: white;
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 4.5rem;
     text-align: left;
-    margin-bottom: 100px;
+    margin-bottom: 0;
+}
+
+/* Accordion */
+.accordion {
+    margin: 2rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.accordion-item {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.25s ease;
+}
+
+.accordion-item.is-open {
+    box-shadow: 0 4px 16px rgba(26, 115, 232, 0.18);
+    border-color: #1a73e8;
+}
+
+.accordion-header {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 1.5rem;
+    text-align: left;
+    gap: 1rem;
+}
+
+.accordion-header:hover {
+    background: none;
+}
+
+.accordion-item.is-open .accordion-header {
+    background: none;
+}
+
+.accordion-header span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a2a3a;
+    line-height: 1.4;
+    position: relative;
+    display: inline-block;
+}
+
+.accordion-header span::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: #1a2a3a;
+    transition: width 0.3s ease;
+}
+
+.accordion-header:hover span::after,
+.accordion-item.is-open .accordion-header span::after {
+    width: 100%;
+}
+
+.accordion-item.is-open .accordion-header span {
+    color: #1a2a3a;
+}
+
+.accordion-icon {
+    flex-shrink: 0;
+    color: #556B7D;
+    transition: transform 0.3s ease, color 0.25s ease;
+}
+
+.accordion-header:hover .accordion-icon {
+    color: #000000;
+}
+
+.accordion-item.is-open .accordion-icon {
+    transform: rotate(180deg) scale(0.65);
+    color: #556B7D;
+}
+
+.accordion-item.is-open .accordion-header:hover .accordion-icon {
+    color: #000000;
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.35s ease;
+    padding: 0 1.5rem;
+}
+
+.accordion-item.is-open .accordion-body {
+    max-height: 300px;
+    padding: 0.75rem 1.5rem 1.25rem;
+}
+
+.accordion-body p {
+    color: #444;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    margin: 0;
 }
 
 .contact-hero {
@@ -184,7 +294,13 @@ nav a:hover {
 }
 
 .contact-hero p {
-    margin-bottom: 0;
+    margin-bottom: 1.25rem;
+}
+
+/* Ícones logo abaixo do parágrafo, alinhados à mesma coluna do texto */
+.contact-hero .contact-icons {
+    justify-content: flex-start;
+    margin-top: 0;
 }
 
 .hero h1 {
@@ -424,9 +540,9 @@ section h2 {
 .parallax-slider {
     position: relative;
     width: 100%;
-    height: 72vh;
-    min-height: 450px;
-    max-height: 770px;
+    height: 82vh;
+    min-height: 500px;
+    max-height: 900px;
     overflow: hidden;
     background: #000000;
 }
@@ -1197,6 +1313,10 @@ footer {
         margin-top: 2.5rem;
     }
 
+    .contact-hero .contact-icons {
+        margin-top: 0;
+    }
+
     .contact-icon {
         width: 64px;
         height: 64px;
@@ -1582,5 +1702,13 @@ footer {
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.2s ease;
+    }
+
+    .accordion-header {
+        padding: 1rem 1.1rem;
+    }
+
+    .accordion-header span {
+        font-size: 0.95rem;
     }
 }
