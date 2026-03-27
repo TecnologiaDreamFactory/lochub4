@@ -425,6 +425,77 @@ function initSolucoesAccordion() {
     });
 }
 
+// ========== Accordion "Porque contratar a LocHub?" ==========
+function initFaqAccordion() {
+    const items = document.querySelectorAll('.accordion .accordion-item');
+    if (!items.length) return;
+
+    items.forEach(function (item) {
+        const header  = item.querySelector('.accordion-header');
+        const body    = item.querySelector('.accordion-body');
+        if (!header || !body) return;
+
+        header.addEventListener('click', function () {
+            const isOpen = item.classList.contains('is-open');
+
+            // Fecha todos os itens
+            items.forEach(function (other) {
+                if (other.classList.contains('is-open')) {
+                    other.classList.remove('is-open');
+                    other.querySelector('.accordion-body').style.maxHeight = null;
+                    other.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Se o clicado estava fechado, abre
+            if (!isOpen) {
+                item.classList.add('is-open');
+                body.style.maxHeight = body.scrollHeight + 'px';
+                header.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Acessibilidade: ativa via teclado
+        header.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                header.click();
+            }
+        });
+    });
+}
+
+// ========== Accordion "Porque contratar a LocHub?" ==========
+(function () {
+    function initLocHubAccordion() {
+        const items = document.querySelectorAll('.accordion-section .accordion-item');
+        if (!items.length) return;
+
+        items.forEach(function (item) {
+            const header = item.querySelector('.accordion-header');
+            if (!header) return;
+
+            header.addEventListener('click', function () {
+                const isOpen = item.classList.contains('is-open');
+
+                // Fecha todos os itens
+                items.forEach(function (el) {
+                    el.classList.remove('is-open');
+                    el.querySelector('.accordion-header').setAttribute('aria-expanded', 'false');
+                });
+
+                // Abre o clicado (se estava fechado)
+                if (!isOpen) {
+                    item.classList.add('is-open');
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', initLocHubAccordion);
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Garante que a página sempre inicia no topo, ignorando âncoras na URL
     window.scrollTo(0, 0);
@@ -434,4 +505,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
     initWhatsappFloat();
     initSolucoesAccordion();
+    initFaqAccordion();
 });
