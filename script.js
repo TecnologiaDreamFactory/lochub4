@@ -218,6 +218,10 @@ function initClientsTicker() {
     const track = document.querySelector('.clients-track');
     if (!track) return;
 
+    // Só pausa com hover real (mouse). Em touch, mouseenter pode disparar sem mouseleave — a animação trava.
+    const canHover = window.matchMedia('(hover: hover)').matches;
+    if (!canHover) return;
+
     track.addEventListener('mouseenter', () => {
         track.style.animationPlayState = 'paused';
     });
